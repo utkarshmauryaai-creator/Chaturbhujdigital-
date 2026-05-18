@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सुविधाएं और गैलरी | चतुर्भुज पब्लिक स्कूल</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #d97706;
+            --background: #fdfbf7;
+            --text: #334155;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+        }
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        .glass-nav {
+            background: rgba(253, 251, 247, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .chakra-spin {
+            animation: spin 20s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2);
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-item img {
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 58, 138, 0.9) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+        .gallery-item .content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .gallery-item:hover .content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .edict-card {
+            transition: all 0.3s ease;
+        }
+        .edict-card:hover {
+            background-color: #1e3a8a;
+            color: white;
+        }
+        .edict-card:hover .edict-number {
+            background-color: #d97706;
+            color: white;
+        }
+        .edict-card:hover p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navbar -->
+    <nav class="glass-nav fixed top-0 left-0 right-0 z-50 border-b border-amber-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-[#1e3a8a] rounded-full flex items-center justify-center">
+                        <i class="fas fa-dharmachakra text-white text-lg md:text-xl chakra-spin"></i>
+                    </div>
+                    <span class="font-cinzel font-bold text-lg md:text-xl text-[#1e3a8a]">चतुर्भुज स्कूल</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="font-cinzel text-[#334155] hover:text-[#1e3a8a] transition-colors">होम</a>
+                    <a href="biography.html" class="font-cinzel text-[#334155] hover:text-[#1e3a8a] transition-colors">हमारे बारे में</a>
+                    <a href="legacy.html" class="font-cinzel text-[#1e3a8a] font-semibold border-b-2 border-[#d97706]">सुविधाएं</a>
+                    <a href="#contact" class="font-cinzel text-[#334155] hover:text-[#1e3a8a] transition-colors">संपर्क</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-[#1e3a8a] text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-[#fdfbf7] border-t border-amber-200/50">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block font-cinzel text-[#334155] hover:text-[#1e3a8a] py-2">होम</a>
+                <a href="biography.html" class="block font-cinzel text-[#334155] hover:text-[#1e3a8a] py-2">हमारे बारे में</a>
+                <a href="legacy.html" class="block font-cinzel text-[#1e3a8a] font-semibold py-2">सुविधाएं</a>
+                <a href="#contact" class="block font-cinzel text-[#334155] hover:text-[#1e3a8a] py-2">संपर्क</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 md:pt-24 pb-20 bg-gradient-to-br from-[#1e3a8a] via-[#1e3a8a]/90 to-[#d97706]/80 overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&h=900&fit=crop" 
+                 alt="स्कूल की सुविधाएं" 
+                 class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 py-20 relative z-10 text-center">
+            <span class="font-cinzel text-amber-300 tracking-widest uppercase text-sm">हमारी सुविधाएं</span>
+            <h1 class="font-cinzel text-4xl md:text-6xl font-bold text-white mt-4 mb-6">
+                आधुनिक शिक्षा का केंद्र
+            </h1>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto">
+                डिजिटल तकनीक, पुस्तकालय, खेल मैदान और शांत वातावरण — सब कुछ एक छत के नीचे
+            </p>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L1440 120L1440 0C1440 0 1140 80 720 80C300 80 0 0 0 0L0 120Z" fill="#fdfbf7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-20 px-4" id="gallery">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <span class="font-cinzel text-[#d97706] tracking-widest uppercase text-sm">स्कूल गैलरी</span>
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold text-[#1e3a8a] mt-4">
+                    हमारी सुविधाओं की झलक
+                </h2>
+                <div class="w-24 h-1 bg-[#d97706] mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Smart Classes -->
+                <div class="fade-in gallery-item rounded-2xl overflow-hidden shadow-xl h-80">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&h=400&fit=crop" 
+                         alt="डिजिटल स्मार्ट क्लास" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h3 class="font-cinzel text-xl font-bold text-white">डिजिटल स्मार्ट क्लास</h3>
+                        <p class="text-white/80 text-sm mt-2">आधुनिक तकनीक से लैस कक्षाएं जहां सीखना होता है मजेदार और आसान।</p>
+                    </div>
+                </div>
+
+                <!-- Library -->
+                <div class="fade-in gallery-item rounded-2xl overflow-hidden shadow-xl h-80">
+                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=600&h=400&fit=crop" 
+                         alt="विशाल पुस्तकालय" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h3 class="font-cinzel text-xl font-bold text-white">विशाल पुस्तकालय</h3>
+                        <p class="text-white/80 text-sm mt-2">हजारों किताबों का संग्रह और शांत पठन कक्ष।</p>
+                    </div>
+                </div>
+
+                <!-- Playground -->
+                <div class="fade-in gallery-item rounded-2xl overflow-hidden shadow-xl h-80">
+                    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&h=400&fit=crop" 
+                         alt="खेल का मैदान" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h3 class="font-cinzel text-xl font-bold text-white">खेल का बड़ा मैदान</h3>
+                        <p class="text-white/80 text-sm mt-2">विभिन्न खेलों के लिए सुसज्जित विशाल मैदान।</p>
+                    </div>
+                </div>
+
+                <!-- Green Campus -->
+                <div class="fade-in gallery-item rounded-2xl overflow-hidden shadow-xl h-80">
+                    <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=600&h=400&fit=crop" 
+                         alt="हरा-भरा परिसर" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h3 class="font-cinzel text-xl font-bold text-white">हरा-भरा वातावरण</h3>
+                        <p class="text-white/80 text-sm mt-2">प्रकृति के बीच शिक्षा का अनुभव।</p>
+                    </div>
+                </div>
+
+                <!-- Classrooms -->
+                <div class="fade-in gallery-item rounded-2xl overflow-hidden shadow-xl h-80">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&h=400&fit=crop" 
+                         alt="आधुनिक कक्षाएं" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h3 class="font-cinzel text-xl font-bold text-white">आधुनिक कक्षाएं</h3>
+                        <p class="text-white/80 text-sm mt-2">हवादार और रोशनी से भरपूर कक्षाएं।</p>
+                    </div>
+                </div>
+
+                <!-- Activity Room -->
+                <div class="fade-in gallery-item rounded-2xl overflow-hidden shadow-xl h-80">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop" 
+                         alt="गतिविधि कक्ष" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h3 class="font-cinzel text-xl font-bold text-white">गतिविधि कक्ष</h3>
+                        <p class="text-white/80 text-sm mt-2">कला, संगीत और अन्य रचनात्मक गतिविधियों के लिए विशेष कमरे।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 px-4 bg-gradient-to-b from-[#fdfbf7] to-amber-50" id="edicts">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <span class="font-cinzel text-[#d97706] tracking-widest uppercase text-sm">हमारी खासियतें</span>
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold text-[#1e3a8a] mt-4">
+                    विशेष सुविधाएं एक नजर में
+                </h2>
+                <p class="text-[#334155] mt-6 max-w-2xl mx-auto">
+                    चतुर्भुज पब्लिक स्कूल में आपके बच्चे के सर्वांगीण विकास के लिए सब कुछ उपलब्ध है
+                </p>
+                <div class="w-24 h-1 bg-[#d97706] mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">1</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">डिजिटल बोर्ड</h4>
+                    <p class="text-sm text-[#334155]">हर कक्षा में इंटरैक्टिव स्मार्ट बोर्ड की सुविधा।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">2</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">विशाल लाइब्रेरी</h4>
+                    <p class="text-sm text-[#334155]">10,000+ पुस्तकों का संग्रह और डिजिटल लाइब्रेरी।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">3</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">विशेष कक्षाएं</h4>
+                    <p class="text-sm text-[#334155]">कमजोर विषयों में एक्स्ट्रा क्लासेस की व्यवस्था।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">4</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">अनुभवी शिक्षक</h4>
+                    <p class="text-sm text-[#334155]">योग्य और प्रशिक्षित शिक्षकों की टीम।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">5</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">खेल मैदान</h4>
+                    <p class="text-sm text-[#334155]">क्रिकेट, फुटबॉल, वॉलीबॉल के लिए बड़ा मैदान।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">6</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">हरा-भरा परिसर</h4>
+                    <p class="text-sm text-[#334155]">प्रदूषण मुक्त, शांत और स्वच्छ वातावरण।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">7</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">योग और ध्यान</h4>
+                    <p class="text-sm text-[#334155]">बच्चों के मानसिक और शारीरिक विकास के लिए योग।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">8</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">सुरक्षित परिसर</h4>
+                    <p class="text-sm text-[#334155]">CCTV निगरानी और सुरक्षा गार्ड की व्यवस्था।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">9</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">पाठ्येतर गतिविधियां</h4>
+                    <p class="text-sm text-[#334155]">कला, संगीत, नृत्य और अन्य कार्यक्रम।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">10</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">नियमित परीक्षण</h4>
+                    <p class="text-sm text-[#334155]">मासिक टेस्ट और प्रोग्रेस रिपोर्ट।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">11</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">कंप्यूटर लैब</h4>
+                    <p class="text-sm text-[#334155]">नवीनतम कंप्यूटर और इंटरनेट की सुविधा।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">12</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">माता-पिता से संवाद</h4>
+                    <p class="text-sm text-[#334155]">नियमित पेरेंट-टीचर मीटिंग और फीडबैक।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#d97706]/20 text-[#d97706] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">13</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">शैक्षिक भ्रमण</h4>
+                    <p class="text-sm text-[#334155]">प्रैक्टिकल नॉलेज के लिए फील्ड ट्रिप्स।</p>
+                </div>
+
+                <div class="fade-in edict-card bg-white rounded-xl p-6 shadow-lg cursor-pointer">
+                    <div class="edict-number w-10 h-10 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full flex items-center justify-center font-cinzel font-bold mb-4">14</div>
+                    <h4 class="font-cinzel font-semibold text-[#1e3a8a] mb-2">किफायती फीस</h4>
+                    <p class="text-sm text-[#334155]">गुणवत्ता शिक्षा उचित मूल्य पर।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Location Section -->
+    <section class="py-20 px-4 bg-[#1e3a8a]" id="symbols">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <span class="font-cinzel text-amber-300 tracking-widest uppercase text-sm">हमारा पता</span>
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold text-white mt-4">
+                    चतुर्भुज पब्लिक स्कूल कहां है?
+                </h2>
+                <p class="text-white/70 mt-6 max-w-2xl mx-auto">
+                    भैंसाना, कुंडा, प्रतापगढ़ में स्थित — शांत और सुरक्षित वातावरण
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                        <div class="flex items-center mb-6">
+                            <div class="w-20 h-20 bg-[#d97706] rounded-full flex items-center justify-center mr-6">
+                                <i class="fas fa-map-marker-alt text-white text-4xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-cinzel text-2xl font-bold text-white">स्कूल का पता</h3>
+                                <p class="text-amber-300 text-sm">भैंसाना, कुंडा</p>
+                            </div>
+                        </div>
+                        <p class="text-white/80 leading-relaxed mb-4">
+                            चतुर्भुज पब्लिक स्कूल प्रतापगढ़ जिले के कुंडा क्षेत्र में भैंसाना गांव में स्थित है। यह स्थान शहर के शोर-शराबे से दूर, प्रकृति की गोद में बसा है।
+                        </p>
+                        <p class="text-white/80 leading-relaxed">
+                            स्कूल तक पहुंचना बेहद आसान है और यहां का शांत वातावरण बच्चों की पढ़ाई के लिए बिल्कुल उपयुक्त है। आसपास कोई प्रदूषण नहीं, सिर्फ हरियाली और ताजी हवा।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                        <div class="flex items-center mb-6">
+                            <div class="w-20 h-20 bg-[#d97706] rounded-full flex items-center justify-center mr-6">
+                                <i class="fas fa-phone text-white text-4xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-cinzel text-2xl font-bold text-white">संपर्क करें</h3>
+                                <p class="text-amber-300 text-sm">हमसे जुड़ें</p>
+                            </div>
+                        </div>
+                        <p class="text-white/80 leading-relaxed mb-4">
+                            प्रवेश प्रक्रिया, फीस, या अन्य किसी जानकारी के लिए आप हमसे संपर्क कर सकते हैं। हमारी टीम आपकी हर समस्या का समाधान करने के लिए तैयार है।
+                        </p>
+                        <p class="text-white/80 leading-relaxed">
+                            स्कूल का दौरा करने के लिए पहले से अपॉइंटमेंट लें। हम आपको स्कूल की सभी सुविधाओं का विस्तार से परिचय देंगे और आपके सभी सवालों के जवाब देंगे।
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="fade-in bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center border border-white/10 hover-lift">
+                    <div class="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clock text-amber-400 text-2xl"></i>
+                    </div>
+                    <h4 class="font-cinzel text-lg font-semibold text-white mb-2">स्कूल समय</h4>
+                    <p class="text-white/60 text-sm">सुबह 8:00 बजे से दोपहर 2:00 बजे तक (सोमवार से शनिवार)</p>
+                </div>
+
+                <div class="fade-in bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center border border-white/10 hover-lift">
+                    <div class="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-alt text-amber-400 text-2xl"></i>
+                    </div>
+                    <h4 class="font-cinzel text-lg font-semibold text-white mb-2">प्रवेश</h4>
+                    <p class="text-white/60 text-sm">नए सत्र के लिए प्रवेश अप्रैल-मई में शुरू होते हैं। अभी अप्लाई करें!</p>
+                </div>
+
+                <div class="fade-in bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center border border-white/10 hover-lift">
+                    <div class="w-16 h-16 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bus text-amber-400 text-2xl"></i>
+                    </div>
+                    <h4 class="font-cinzel text-lg font-semibold text-white mb-2">परिवहन सुविधा</h4>
+                    <p class="text-white/60 text-sm">आस-पास के गांवों से स्कूल बस की सुविधा उपलब्ध है।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="py-24 px-4 relative overflow-hidden bg-gradient-to-r from-[#d97706] to-amber-500">
+        <div class="max-w-4xl mx-auto relative z-10 fade-in">
+            <div class="text-center">
+                <i class="fas fa-quote-left text-5xl text-white/30 mb-8"></i>
+                <blockquote class="font-cinzel text-2xl md:text-3xl text-white leading-relaxed italic">
+                    "शिक्षा सबसे शक्तिशाली हथियार है जिससे आप दुनिया बदल सकते हैं। हम यहां हर बच्चे को उसके सपने पूरे करने का अवसर देते हैं।"
+                </blockquote>
+                <div class="mt-8 flex items-center justify-center space-x-4">
+                    <div class="w-12 h-px bg-white/50"></div>
+                    <span class="font-cinzel text-white font-semibold tracking-wider">चतुर्भुज पब्लिक स्कूल</span>
+                    <div class="w-12 h-px bg-white/50"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 px-4" id="contact">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <span class="font-cinzel text-[#d97706] tracking-widest uppercase text-sm">हमसे संपर्क करें</span>
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold text-[#1e3a8a] mt-4">
+                    अपने विचार साझा करें
+                </h2>
+                <p class="text-[#334155] mt-6 max-w-2xl mx-auto">
+                    किसी भी प्रकार की जानकारी, प्रवेश प्रक्रिया या सुझाव के लिए हमसे संपर्क करें
+                </p>
+                <div class="w-24 h-1 bg-[#d97706] mx-auto mt-6"></div>
+            </div>
+
+            <div class="fade-in bg-white rounded-2xl shadow-xl p-8 md:p-12">
+                <form id="contact-form" action="https://getform.io/f/aroxovdb" method="POST" class="space-y-6">
+                    <!-- Form name for identification -->
+                    <input type="hidden" name="_gotcha" style="display:none !important">
+                    <input type="hidden" name="form_name" value="चतुर्भुज पब्लिक स्कूल संपर्क फॉर्म">
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block font-cinzel text-sm font-semibold text-[#1e3a8a] mb-2">
+                                आपका नाम
+                            </label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 outline-none transition-all"
+                                   placeholder="अपना नाम लिखें">
+                        </div>
+                        <div>
+                            <label for="email" class="block font-cinzel text-sm font-semibold text-[#1e3a8a] mb-2">
+                                ईमेल / मोबाइल
+                            </label>
+                            <input type="text" id="email" name="email" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 outline-none transition-all"
+                                   placeholder="आपका ईमेल या फोन नंबर">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block font-cinzel text-sm font-semibold text-[#1e3a8a] mb-2">
+                            विषय
+                        </label>
+                        <select id="subject" name="subject" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 outline-none transition-all bg-white">
+                            <option value="">विषय चुनें</option>
+                            <option value="प्रवेश">प्रवेश प्रक्रिया</option>
+                            <option value="फीस">फीस की जानकारी</option>
+                            <option value="सुविधाएं">सुविधाओं के बारे में</option>
+                            <option value="अन्य">अन्य प्रश्न</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block font-cinzel text-sm font-semibold text-[#1e3a8a] mb-2">
+                            आपका संदेश
+                        </label>
+                        <textarea id="message" name="message" rows="5" required
+                                  class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 outline-none transition-all resize-none"
+                                  placeholder="अपना संदेश यहां लिखें..."></textarea>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="subscribe" name="subscribe" 
+                               class="w-4 h-4 text-[#1e3a8a] border-gray-300 rounded focus:ring-[#1e3a8a]">
+                        <label for="subscribe" class="ml-2 text-sm text-[#334155]">
+                            स्कूल की गतिविधियों और अपडेट के लिए सूचनाएं प्राप्त करें
+                        </label>
+                    </div>
+
+                    <button type="submit" 
+                            class="w-full md:w-auto px-8 py-4 bg-[#1e3a8a] hover:bg-[#1e3a8a]/90 text-white font-cinzel font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center space-x-2">
+                        <span>संदेश भेजें</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1e3a8a] text-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-dharmachakra text-[#1e3a8a] text-xl"></i>
+                        </div>
+                        <span class="font-cinzel font-bold text-2xl">चतुर्भुज पब्लिक स्कूल</span>
+                    </div>
+                    <p class="text-white/70 leading-relaxed">
+                        भैंसाना, कुंडा, प्रतापगढ़ में स्थित एक आधुनिक स्कूल जो बच्चों को गुणवत्तापूर्ण शिक्षा और संस्कारों के साथ तैयार करता है।
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#d97706] transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#d97706] transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#d97706] transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-[#d97706] transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-cinzel font-semibold text-lg mb-6">त्वरित लिंक</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html" class="text-white/70 hover:text-[#d97706] transition-colors">होम</a></li>
+                        <li><a href="biography.html" class="text-white/70 hover:text-[#d97706] transition-colors">हमारे बारे में</a></li>
+                        <li><a href="legacy.html" class="text-white/70 hover:text-[#d97706] transition-colors">सुविधाएं</a></li>
+                        <li><a href="#contact" class="text-white/70 hover:text-[#d97706] transition-colors">संपर्क करें</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-cinzel font-semibold text-lg mb-6">और जानें</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#gallery" class="text-white/70 hover:text-[#d97706] transition-colors">गैलरी</a></li>
+                        <li><a href="#edicts" class="text-white/70 hover:text-[#d97706] transition-colors">सुविधाओं की सूची</a></li>
+                        <li><a href="#symbols" class="text-white/70 hover:text-[#d97706] transition-colors">स्कूल का पता</a></li>
+                        <li><a href="YOUR_FORM_LINK_HERE" class="text-white/70 hover:text-[#d97706] transition-colors">अप्लाई नाउ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/60 text-sm">
+                    © 2025 चतुर्भुज पब्लिक स्कूल। सर्वाधिकार सुरक्षित।
+                </p>
+                <p class="text-white/60 text-sm mt-2 md:mt-0">
+                    <i class="fas fa-map-marker-alt text-[#d97706] mr-1"></i> भैंसाना, कुंडा, प्रतापगढ़
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Navbar Background on Scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        // Contact Form - Now handled by Web3Forms external service
+        // No preventDefault needed - form submits directly to Web3Forms API
+    </script>
+</body>
+  </html>
