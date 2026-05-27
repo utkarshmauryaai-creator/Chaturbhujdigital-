@@ -46,7 +46,7 @@
                     <div class="w-10 h-10 md:w-12 md:h-12 bg-[#1e3a8a] rounded-full flex items-center justify-center">
                         <i class="fas fa-dharmachakra text-white text-lg md:text-xl chakra-spin"></i>
                     </div>
-                    <span class="font-cinzel font-bold text-lg md:text-xl text-[#1e3a8a]">चतुर्भुज स्कूल</span>
+                    <span class="font-cinzel font-bold text-lg md:text-xl text-[#1e3a8a]">चतुर्भुज डिजिटल स्कूल</span>
                 </a>
 
                 <div class="hidden md:flex items-center space-x-8">
@@ -84,18 +84,24 @@
                     हमारे स्कूल के कार्यक्रमों और दैनिक गतिविधियों की ताज़ा तस्वीरें
                 </p>
                 <div class="w-24 h-1 bg-[#d97706] mx-auto mt-6"></div>
-            <div class="rounded-2xl shadow-xl border border-amber-100/50 mt-8 w-full relative overflow-hidden" style="height: 75vh; min-height: 650px; bg: #fdfbf7;">
-    
-    <iframe 
-        src="https://padlet.com/gyanendrakumarmaurya22/padlet-bvfz4ndrbd6sk2xy?embed=1" 
-        allow="camera;microphone;geolocation"
-        class="absolute left-0 w-full border-none"
-        style="top: -115px; height: calc(100% + 155px);"
-        title="चतुर्भुज स्कूल डिजिटल गैलरी">
-    </iframe>
+            </div>
 
-</div>
+            <div class="rounded-2xl shadow-xl border border-amber-100/50 mt-8 w-full relative overflow-hidden" style="height: 75vh; min-height: 650px; background-color: #fdfbf7;">
+                <iframe 
+                    src="https://padlet.com/gyanendrakumarmaurya22/padlet-bvfz4ndrbd6sk2xy?embed=1" 
+                    allow="camera;microphone;geolocation"
+                    class="absolute left-0 w-full border-none"
+                    style="top: -115px; height: calc(100% + 155px);"
+                    title="चतुर्भुज स्कूल डिजिटल गैलरी">
+                </iframe>
+            </div>
 
+            <div class="flex justify-center mt-10 fade-in">
+                <button onclick="openShareApps()" class="bg-[#1e3a8a] hover:bg-[#d97706] text-white font-bold py-3 px-8 rounded-full shadow-lg flex items-center transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl">
+                    <i class="fas fa-share-nodes text-xl mr-3"></i>
+                    सीधा ऐप्स पर शेयर करें
+                </button>
+            </div>
 
         </div>
     </main>
@@ -144,6 +150,30 @@
             if (window.scrollY > 50) nav.classList.add('shadow-md');
             else nav.classList.remove('shadow-md');
         });
+
+        // 🔥 जादुई ऐप शेयरिंग फंक्शन (Web Share API) 🔥
+        async function openShareApps() {
+            let siteUrl = window.location.href; 
+            let messageText = "चतुर्भुज डिजिटल स्कूल की शानदार फोटो और वीडियो गैलरी यहाँ देखें:";
+
+            // अगर यूज़र मोबाइल फोन पर है, तो सीधा ऐप्स की लिस्ट खुलेगी
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'चतुर्भुज डिजिटल स्कूल गैलरी',
+                        text: messageText,
+                        url: siteUrl 
+                    });
+                    console.log('शेयर मेन्यू सफलतापूर्वक खुल गया!');
+                } catch (error) {
+                    console.log('यूज़र ने शेयरिंग बंद कर दी:', error);
+                }
+            } else {
+                // अगर कोई कंप्यूटर/लैपटॉप पर टेस्ट कर रहा है, तो लिंक कॉपी हो जाएगा
+                navigator.clipboard.writeText(siteUrl);
+                alert('गैलरी का लिंक कॉपी हो गया है! आप इसे WhatsApp Web या कहीं भी पेस्ट करके शेयर कर सकते हैं।');
+            }
+        }
     </script>
 </body>
 </html>
