@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>स्मार्ट लाइब्रेरी | चतुर्भुज डिजिटल स्कूल</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #d97706;
+            --background: #fdfbf7;
+            --text: #334155;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+        }
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+        .glass-nav {
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .chakra-spin {
+            animation: spin 20s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(30, 58, 138, 0.15);
+        }
+        /* Form container style */
+        .form-container iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="glass-nav fixed top-0 left-0 right-0 z-50 border-b border-amber-200/50px shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-[#1e3a8a] rounded-full flex items-center justify-center">
+                        <i class="fas fa-dharmachakra text-white text-lg md:text-xl chakra-spin"></i>
+                    </div>
+                    <span class="font-cinzel font-bold text-lg md:text-xl text-[#1e3a8a]">चतुर्भुज डिजिटल स्कूल</span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="font-cinzel text-[#334155] hover:text-[#1e3a8a] transition-colors">होम</a>
+                    <a href="biography.html" class="font-cinzel text-[#334155] hover:text-[#1e3a8a] transition-colors">हमारे बारे में</a>
+                    <a href="legacy.html" class="font-cinzel text-[#334155] hover:text-[#1e3a8a] transition-colors">सुविधाएं</a>
+                    <a href="library.html" class="font-cinzel text-[#1e3a8a] font-semibold border-b-2 border-[#d97706]">लाइब्रेरी</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-[#1e3a8a] text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-[#fdfbf7] border-t border-amber-200/50">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block font-cinzel text-[#334155] hover:text-[#1e3a8a] py-2">होम</a>
+                <a href="biography.html" class="block font-cinzel text-[#334155] hover:text-[#1e3a8a] py-2">हमारे बारे में</a>
+                <a href="legacy.html" class="block font-cinzel text-[#334155] hover:text-[#1e3a8a] py-2">सुविधाएं</a>
+                <a href="library.html" class="block font-cinzel text-[#1e3a8a] font-semibold py-2">लाइब्रेरी</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-24 md:pt-32 pb-20 bg-[#1e3a8a] overflow-hidden">
+        <div class="absolute inset-0 opacity-40">
+            <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=1600&h=900&fit=crop" 
+                 alt="Modern Library" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#1e3a8a]/80 to-[#1e3a8a]"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 py-16 relative z-10 text-center fade-in">
+            <div class="w-20 h-20 bg-[#d97706] rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/30">
+                <i class="fas fa-book-reader text-white text-3xl"></i>
+            </div>
+            <span class="font-cinzel text-amber-300 tracking-widest uppercase text-sm font-bold">हाई-प्रोफाइल स्मार्ट स्टडी ज़ोन</span>
+            <h1 class="font-cinzel text-4xl md:text-6xl font-bold text-white mt-4 mb-6 leading-tight">
+                चतुर्भुज डिजिटल स्कूल <br> <span class="text-amber-400">स्मार्ट लाइब्रेरी</span>
+            </h1>
+            <p class="text-xl text-white/90 max-w-2xl mx-auto">
+                शांत वातावरण, आधुनिक सुविधाएं और आपके सपनों की उड़ान के लिए एक आदर्श स्थान।
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="#admission-form" class="bg-amber-500 hover:bg-amber-600 text-white font-cinzel font-bold px-8 py-3 rounded-full transition-all shadow-lg hover:shadow-amber-500/50">
+                    सदस्यता लें (Join Now)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-4 bg-[#fdfbf7]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <span class="font-cinzel text-[#d97706] tracking-widest uppercase text-sm font-bold">प्रीमियम सुविधाएं</span>
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold text-[#1e3a8a] mt-4">
+                    एकाग्रता और सफलता का केंद्र
+                </h2>
+                <div class="w-24 h-1 bg-[#d97706] mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover-lift border-t-4 border-[#1e3a8a] fade-in">
+                    <div class="w-14 h-14 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-[#1e3a8a] text-2xl"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-[#1e3a8a] mb-3">समय (Timings)</h3>
+                    <p class="text-[#334155] leading-relaxed">
+                        हमारी लाइब्रेरी <strong class="text-[#d97706]">सुबह 6:00 बजे से शाम 6:00 बजे</strong> तक खुली रहती है। आप अपनी सुविधानुसार आकर पढ़ाई कर सकते हैं।
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover-lift border-t-4 border-[#d97706] fade-in" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-[#d97706]/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-wifi text-[#d97706] text-2xl"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-[#1e3a8a] mb-3">हाई-स्पीड इंटरनेट</h3>
+                    <p class="text-[#334155] leading-relaxed">
+                        ऑनलाइन क्लासेज और रिसर्च के लिए 5G स्पीड वाला निर्बाध वाई-फाई (Wi-Fi) कनेक्शन सभी छात्रों के लिए उपलब्ध है।
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover-lift border-t-4 border-[#1e3a8a] fade-in" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center mb-6 flex gap-2">
+                        <i class="fas fa-snowflake text-[#1e3a8a] text-xl"></i>
+                        <i class="fas fa-fan text-[#1e3a8a] text-xl"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-[#1e3a8a] mb-3">AC और वेंटिलेशन</h3>
+                    <p class="text-[#334155] leading-relaxed">
+                        गर्मियों में आरामदायक पढ़ाई के लिए पूरी लाइब्रेरी पूरी तरह से वातानुकूलित (Air Conditioned) और हवादार है।
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover-lift border-t-4 border-[#d97706] fade-in">
+                    <div class="w-14 h-14 bg-[#d97706]/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-[#d97706] text-2xl"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-[#1e3a8a] mb-3">पर्सनल टेबल और लैंप</h3>
+                    <p class="text-[#334155] leading-relaxed">
+                        हर छात्र के लिए एक विशाल पर्सनल डेस्क, आरामदायक कुर्सी और आंखों की सुरक्षा के लिए पर्सनल स्टडी लैंप की व्यवस्था।
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover-lift border-t-4 border-[#1e3a8a] fade-in" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-video text-[#1e3a8a] text-2xl"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-[#1e3a8a] mb-3">CCTV सुरक्षा</h3>
+                    <p class="text-[#334155] leading-relaxed">
+                        छात्रों और उनके सामान की 100% सुरक्षा सुनिश्चित करने के लिए 24/7 हाई-डेफिनिशन CCTV कैमरों से निगरानी।
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-xl hover-lift border-t-4 border-[#d97706] fade-in" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-[#d97706]/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-volume-mute text-[#d97706] text-2xl"></i>
+                    </div>
+                    <h3 class="font-cinzel text-xl font-bold text-[#1e3a8a] mb-3">शांत और हाई-प्रोफाइल</h3>
+                    <p class="text-[#334155] leading-relaxed">
+                        पूरी तरह से शोर-मुक्त (Pin-drop silence) और प्रेरणादायक माहौल, जो प्रतियोगी परीक्षाओं की तैयारी के लिए एकदम सही है।
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admission-form" class="py-20 px-4 bg-[#1e3a8a] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <i class="fas fa-dharmachakra text-[30rem] text-white absolute -top-20 -right-20"></i>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-12 fade-in">
+                <span class="font-cinzel text-amber-300 tracking-widest uppercase text-sm">एडमिशन</span>
+                <h2 class="font-cinzel text-3xl md:text-5xl font-bold text-white mt-4">
+                    लाइब्रेरी सदस्यता फॉर्म
+                </h2>
+                <p class="text-white/80 mt-4 text-lg">
+                    लाइब्रेरी जॉइन करने के लिए नीचे दिया गया ऑनलाइन फॉर्म भरें /
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-2xl p-2 md:p-6 fade-in form-container">
+                
+                <div class="w-full h-[600px] md:h-[800px] bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center text-center p-6">
+                    <i class="fas fa-code text-4xl text-gray-400 mb-4"></i>
+                    <h3 class="text-[#1e3a8a] font-bold text-xl mb-2">Google Form Placeholder</h3>
+                    <p class="text-gray-500">
+                        अपना Google Form / Microsoft Form का <strong>Embed Code (&lt;iframe&gt;)</strong> इस <code>&lt;div&gt;</code> के अंदर पेस्ट करें।
+                    </p>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#fdfbf7] text-[#1e3a8a] py-12 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <i class="fas fa-dharmachakra text-[#d97706] text-2xl"></i>
+                <h3 class="font-cinzel text-2xl font-bold">चतुर्भुज डिजिटल स्कूल</h3>
+            </div>
+            <p class="text-[#334155] mb-6 font-semibold"><i class="fas fa-map-marker-alt text-[#d97706] mr-2"></i> भैंसाना, कुंडा, प्रतापगढ़</p>
+            <p class="text-gray-500 text-sm">© 2026 चतुर्भुज डिजिटल स्कूल | स्मार्ट लाइब्रेरी। सर्वाधिकार सुरक्षित।</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Scroll Animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
+
